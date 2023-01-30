@@ -9,6 +9,14 @@ def index():
     return "<a href='/posts'>Posts</a>"
 
 
+@app.route("/response")
+def response():
+    headers = {
+        "content-Type": "text/html"
+    }
+    return "uma resposta do servidor"
+
+
 @app.route("/posts")
 @app.route("/posts/<int:id>")
 def posts(id):
@@ -26,5 +34,7 @@ def posts(id):
     return data
 
 
+"""  o debug serve tanto para depurar nosso código, como tbm pra reiniciar nosso servidor automatico
+ """
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
