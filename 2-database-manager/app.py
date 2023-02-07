@@ -22,7 +22,13 @@ class User(db.Model):
 @app.route("/")
 def index():
     users = User.query.all()
-    return render_template("user.html", users=users)
+    return render_template("users.html", users=users)
+
+
+@app.route("/user/<int:id>")
+def unique(id):
+    user = User.query.get(id)
+    return render_template("user.html", user=user)
 
 
 @app.route("/user/delete/<int:id>")
